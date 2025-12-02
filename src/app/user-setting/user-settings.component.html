@@ -1,0 +1,39 @@
+<div class="home-wrapper">
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <div class="profile-left">
+      <img src="assets/user-avatar.jpg" class="profile-avatar">
+      <div>
+        <div class="profile-name">{{ user.name }}</div>
+        <div class="profile-sub">{{ user.email }}</div>
+        <div class="profile-sub">{{ user.phone }}</div>
+      </div>
+    </div>
+
+    <button class="btn-outline" (click)="goToEdit()">Edit</button>
+  </div>
+
+  <!-- Recent Reports -->
+  <div class="recent-card">
+    <h3 class="recent-title">My Recent Reports</h3>
+
+    <table class="reports-table">
+      <thead>
+        <tr>
+          <th>Incident Type</th>
+          <th>Date Submitted</th>
+          <th>Status</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of reports">
+          <td>{{ r.type }}</td>
+          <td>{{ r.date }}</td>
+          <td>{{ r.status }}</td>
+          <td><a href="#">View</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

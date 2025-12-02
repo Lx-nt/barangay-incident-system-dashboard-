@@ -19,37 +19,30 @@ export class LoginComponent {
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      role: ['', [Validators.required]]
+      password: ['', [Validators.required]]
     });
 
-    // Clear any existing user data on login page load
+    // Clear any previous login session
     this.clearUserData();
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value;
-      const role = this.loginForm.get('role')?.value;
-      
-      console.log('Login successful:', {
-        username: username,
-        role: role
-      });
-      
-      // Store login info
+
+      console.log('Login successful:', { username });
+
+      // Store login data
       localStorage.setItem('currentUser', JSON.stringify({
-        username: username,
-        role: role,
+        username,
         loggedIn: true,
         loginTime: new Date().toISOString()
       }));
-      
-      // Navigate to dashboard
-      this.router.navigate(['/dashboard/home']);
-      
+
+      // 🔵 Redirect user to the PUBLIC landing page (Screenshot #1)
+      this.router.navigate(['/user-landing']);
+
     } else {
-      // Mark all fields as touched to show validation errors
       Object.keys(this.loginForm.controls).forEach(key => {
         this.loginForm.get(key)?.markAsTouched();
       });
@@ -57,7 +50,6 @@ export class LoginComponent {
   }
 
   private clearUserData() {
-    // Clear any existing user data when arriving at login page
     localStorage.removeItem('currentUser');
   }
 }

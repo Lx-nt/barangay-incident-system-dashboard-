@@ -1,0 +1,31 @@
+<div class="user-layout">
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="user-label">User</div>
+
+    <!-- FIXED HOME ROUTE -->
+    <a routerLink="/user-landing" routerLinkActive="active" class="nav-item">
+      <i class="fas fa-home"></i> <span>Home</span>
+    </a>
+
+    <a routerLink="/user/report" routerLinkActive="active" class="nav-item">
+      <i class="fas fa-plus"></i> <span>Add Report</span>
+    </a>
+
+    <a routerLink="/user/settings" routerLinkActive="active" class="nav-item">
+      <i class="fas fa-gear"></i> <span>Settings</span>
+    </a>
+
+    <div class="sidebar-footer">
+      <div class="avatar">
+        <img src="/assets/user-avatar.jpg" alt="User">
+      </div>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </aside>
+
+  <!-- RIGHT CONTENT -->
+  <main class="main-area">
+    <router-outlet></router-outlet>
+  </main>
+</div>

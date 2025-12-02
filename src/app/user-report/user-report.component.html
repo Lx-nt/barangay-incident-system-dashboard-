@@ -1,0 +1,107 @@
+<div class="card">
+  <h2 class="page-title">Report an Incident</h2>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab" [class.active]="step === 1">Basic info</div>
+    <div class="tab" [class.active]="step === 2">Details</div>
+    <div class="tab" [class.active]="step === 3">Submit</div>
+  </div>
+
+  <!-- STEP 1 -->
+  <form *ngIf="step === 1" class="form-grid">
+    <div class="form-group">
+      <label>Reporter Name</label>
+      <input type="text" class="form-control" placeholder="Your name">
+    </div>
+
+    <div class="form-group">
+      <label>Contact Info</label>
+      <input type="text" class="form-control" placeholder="Phone or email">
+    </div>
+
+    <div class="form-group">
+      <label>Incident Type</label>
+      <select class="form-control">
+        <option>Accident</option>
+        <option>Fire</option>
+        <option>Noise Complaint</option>
+        <option>Crime</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Location</label>
+      <input type="text" class="form-control" placeholder="Barangay Address">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" rows="3" placeholder="Describe the incident..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Attachments</label>
+      <input type="file" class="form-control">
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-secondary" disabled>Back</button>
+      <button type="button" class="btn-primary" (click)="next()">Next</button>
+    </div>
+  </form>
+
+  <!-- STEP 2 -->
+  <form *ngIf="step === 2" class="form-grid">
+    <div class="form-group">
+      <label>Incident Title / Subject</label>
+      <input type="text" class="form-control" placeholder="Short title (e.g. Road Accident)">
+    </div>
+
+    <div class="form-group">
+      <label>Incident Type</label>
+      <select class="form-control">
+        <option>Accident</option>
+        <option>Fire</option>
+        <option>Noise Complaint</option>
+        <option>Crime</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Date &amp; Time of Incident</label>
+      <input type="datetime-local" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Location / Landmark</label>
+      <input type="text" class="form-control" placeholder="Near Barangay Hall, Zone 5, Street Name">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" rows="3"
+        placeholder="Yong tao bumongo sa truck..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>People Involved / Witnesses</label>
+      <input type="text" class="form-control" placeholder="Name and contact">
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-secondary" (click)="back()">Back</button>
+      <button type="button" class="btn-primary" (click)="next()">Next</button>
+    </div>
+  </form>
+
+  <!-- STEP 3 -->
+  <div *ngIf="step === 3" class="submit-step">
+    <p>Review your details and submit your report.</p>
+
+    <div class="form-actions">
+      <button type="button" class="btn-secondary" (click)="back()">Back</button>
+      <button type="button" class="btn-primary" (click)="submit()">Submit</button>
+    </div>
+  </div>
+</div>
